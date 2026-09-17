@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rizwan Aseef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF; --paper-2:#FFF7C2; --ink:#161616; --ink-soft:#5B5B5B;
+    --pen:#1749D6; --pen-soft:rgba(23,73,214,.10); --hl:rgba(255,230,0,.55);
+    --rule:rgba(22,22,22,.14); --link:#D6336C; --measure:44rem; color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --paper:#FFFFFF; --paper-2:#FFF7C2; --ink:#161616; --ink-soft:#5B5B5B; --pen:#1749D6; --pen-soft:rgba(23,73,214,.10); --hl:rgba(255,230,0,.55); --rule:rgba(22,22,22,.14); --link:#D6336C; } }
+  :root[data-theme="dark"]{ --paper:#FFFFFF; --paper-2:#FFF7C2; --ink:#161616; --ink-soft:#5B5B5B; --pen:#1749D6; --pen-soft:rgba(23,73,214,.10); --hl:rgba(255,230,0,.55); --rule:rgba(22,22,22,.14); --link:#D6336C; }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:"Newsreader", Georgia, "Times New Roman", serif; font-size:1.1rem; line-height:1.6; font-optical-sizing:auto}
+  a{color:var(--link); text-decoration:underline; text-decoration-color:rgba(214,51,108,.35); text-underline-offset:.18em}
+  a:hover{text-decoration-color:var(--link)}
+  :focus-visible{outline:2px solid var(--pen); outline-offset:3px}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
+
+  /* header, the way Sites lays it out: name left, pages right */
+  .top{position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--rule)}
+  .top .in{max-width:64rem; margin:0 auto; display:flex; align-items:center; gap:1.5rem; padding:.9rem 1.2rem; overflow-x:auto; white-space:nowrap}
+  .top .brand{font-weight:600; font-size:1.25rem; text-decoration:none; color:var(--ink); margin-right:auto}
+  .top a.nav{text-decoration:none; color:var(--ink); font-size:1rem; padding:.25rem 0; border-bottom:2px solid transparent}
+  .top a.nav.on{border-bottom-color:var(--pen); color:var(--pen)}
+
+  main{max-width:var(--measure); margin:0 auto; padding:2rem 1.2rem 4rem}
+  h1{font-size:clamp(2rem,6vw,3rem); font-weight:600; line-height:1.15; margin:1.2rem 0 1rem; color:var(--ink)}
+  h1.course{text-transform:uppercase; letter-spacing:.02em}
+  h2{font-size:clamp(1.6rem,4.5vw,2.2rem); font-weight:600; line-height:1.2; margin:2.4rem 0 .8rem; color:var(--pen)}
+  h3{font-size:1.35rem; font-weight:600; margin:2rem 0 .6rem}
+  .label{font-size:1.05rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin:2.6rem 0 .8rem}
+  p{margin:0 0 1.1em}
+  .soft{color:var(--ink-soft)}
+  .small{font-size:.95rem}
+  .note{font-style:italic; color:var(--ink-soft); font-size:.95rem}
+  hr{border:0; border-top:1px solid var(--rule); margin:2.4rem 0}
+
+  .pen{font-family:"Caveat","Segoe Print","Bradley Hand",cursive; color:var(--pen); font-size:1.35rem; line-height:1.2; font-weight:500}
+
+  /* section list on the home page, like her four areas */
+  .areas{list-style:none; padding:0; margin:1rem 0 1.5rem}
+  .areas li{padding:.55rem 0; border-bottom:1px solid var(--rule); font-size:1.25rem}
+  .areas a{text-decoration:none; color:var(--pen); font-weight:600}
+  .areas span{display:block; font-size:1rem; color:var(--ink-soft)}
+
+  /* the scan stands where her images stand */
+  .scan{position:relative; width:100%; height:min(72vh,48rem); border:1px solid var(--rule); background:var(--paper-2); margin:1.2rem 0 .4rem}
+  .scan iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+
+  /* annotated passages */
+  .sheet{background:var(--paper-2); padding:1.2rem 1.2rem 1rem; margin:1rem 0 1.2rem; box-shadow:0 1px 0 var(--rule)}
+  .sheet .src{font-size:.9rem; color:var(--pen); margin-bottom:.8rem}
+  .passage p{margin-bottom:.4em}
+  .mnote{margin:.1rem 0 1rem; padding-left:.75rem; border-left:2px solid var(--pen)}
+
+  .foot{border-top:1px solid var(--rule); margin-top:3rem; padding-top:1.2rem; font-size:.95rem; color:var(--ink-soft)}
+  .prevnext{display:flex; justify-content:space-between; gap:1rem; margin-top:2.5rem}
+  .prevnext a{text-decoration:none; color:var(--pen); font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <a class="brand" href="#/">Rizwan Aseef</a>
+  <a class="nav" href="#/" data-nav="home">Home</a>
+  <a class="nav" href="#/told" data-nav="told">Told</a>
+  <a class="nav" href="#/copied" data-nav="copied">Copied</a>
+  <a class="nav" href="#/fixed" data-nav="fixed">Fixed</a>
+  <a class="nav" href="#/scattered" data-nav="scattered">Scattered</a>
+</div></header>
+
+<main id="app"></main>
+
+<script>
+const READINGS = [
+  {
+    id:"young", page:"fixed", drive:"https://drive.google.com/file/d/1zmedbnG9DMFbiLrlvT9SZqKKxzNw_1yc/view",
+    author:"Tory Young",
+    title:"“Reading”, from Studying English Literature",
+    year:"Cambridge University Press, 2008",
+    note:"where the discipline of English came from, and what it asks of a first-year",
+    what:"This is a chapter from a guide written for people in exactly my position, first-year English students who arrived expecting one thing and were handed another. Young goes through how English Literature became a subject you could take a degree in, Richards and practical criticism at Cambridge in the 1920s, the Leavises deciding which books were civilising and which were not, and then the wave of theory from the seventies onwards that changed the questions completely. It ends with a first-year student called Tracey Tingey writing about what her Ways of Reading module did to her, which is the part I keep going back to.",
+    passages:[
+      {text:"Young starts with practical criticism: the poem on the page, nothing else in the room, and the belief that if you looked hard enough at the technique you'd arrive at an objective judgement of whether it was any good.", pen:"attacks this head on"},
+      {text:"The word canon, she points out, comes from the church's list of texts that were supposed to inspire revelation. The literary canon borrowed that authority, and used it to write off genre fiction as a “drug habit” (Q. D. Leavis's phrase).", pen:"Literary Canon"},
+      {text:"Cultural studies changed the question. Not “is this good?” but “how has this been read, and who decided?” Books as products of ideology and producers of it.", pen:"Books are understood as products of and producers of ideology."},
+      {text:"Then Tracey's reflection from her Ways of Reading module. The theories leak into every other module, the confusion slowly turns into confidence, and she ends by saying all texts have lost their innocence for her.", pen:"this is the transformative-learner moment. See Copied."}
+    ],
+    response:"I will be honest, I came in thinking that the job was to say whether a book was good and then defend that well. This chapter told me that particular question had been retired before my parents were born. What I actually found difficult was not the long list of theories, it was the paradox Young points out near the end, that I am expected to drop my own voice and pick up an academic one, but the one thing that gets you thrown out of a university is losing your own voice completely (plagiarism, in other words). I still do not fully know where the line between the two is, and I have started to think that not knowing might be the point. The one place I pushed back was where she says that simply liking a book is no longer enough. Fine, but it is still where every reading I have ever done started, and I do not think the course wants me to pretend otherwise.",
+    slot:""
+  },
+  {
+    id:"poduval", page:"fixed", drive:"https://drive.google.com/file/d/1JQ4GBBhBqoORgMiPa9rk09bM8cLTkgXZ/view",
+    author:"Satish Poduval",
+    title:"“To Be in Eng. Lit., Now That…: The Voyage Out”",
+    year:"in Subject to Change: Teaching Literature in the Nineties, ed. Susie Tharu, 1998",
+    note:"the crisis in English studies, seen from Cochin and Hyderabad",
+    what:"Poduval writes this essay about a year after finishing his MA. In Cochin he was, by his own account, in love with Shakespeare and Milton, topped his class and got the fellowship, and then he arrived at CIEFL in Hyderabad and ran straight into what people were then calling the crisis in English studies, after which all the questions were different. What is literature doing in a society organised around caste and cultural capital? What was his own success in the subject actually made of? He does not conclude that English should be scrapped. He concludes that it should be read from the margin, and he explains what that means.",
+    passages:[
+      {text:"He describes the words-on-the-page, “apolitical” way of reading he'd been trained in, and the moment it stood revealed as tools from the colonial kitbag.", pen:"The word-on-page apolitical approach is reinforcing an invisible ideology."},
+      {text:"An Indian department studying English is doubly marginal, he says, neither “Western” nor “Indian”. And that awkward position is exactly what lets it read both sides critically.", pen:"Doubly marginal?? An Indian department studying English from under the centre."},
+      {text:"Using Bourdieu, he shows caste working like inherited capital in the classroom. The students who do badly aren't slow; it's that “merit” is defined as reproducing the prescribed material in the acceptable style.", pen:"Social dissymmetry → a fundamental disbalance. Caste and merit."},
+      {text:"The question he keeps returning to: should English studies continue in India at all? And the answer that comes straight back: can they be abandoned?", pen:"Should English be not taught anymore?"}
+    ],
+    response:"This is Young's chapter all over again, except this time it is somebody sitting more or less where I am sitting. The canon did not arrive in Bengaluru as a neutral reading list, it arrived as a syllabus designed to produce colonial subjects, and Poduval is the first writer on this course who admitted that out loud and then did not quit the subject. His idea of a bicameral approach, preparing students for the job market that actually exists while at the same time giving them the mindset to change it, is more or less the arrangement I have made with this degree, since I am doing English and Digital Humanities while running a small business at the same time, and I think he would understand that. The section on caste and merit was the hardest to sit with, because I could see a version of it in our own classroom, in who speaks first, whose English gets nodded at and who goes quiet, and I do not have a clean answer to that. I only know that I noticed it more after reading him.",
+    slot:""
+  },
+  {
+    id:"viswanathan", page:"fixed", drive:"https://drive.google.com/file/d/1fJp8943yt0_OxzX3XgQFv85wLmG7VcPA/view",
+    author:"Gauri Viswanathan",
+    title:"Masks of Conquest: Literary Study and British Rule in India",
+    year:"Columbia University Press, 1989",
+    note:"English literature as a way of ruling, before it was a subject",
+    what:"Viswanathan's argument, put simply, is that English literature was being taught in Indian classrooms before it was a proper university subject in England, and that it was put there to do a job. The British could not openly teach Christianity in government schools without risking unrest, so they taught English literature instead and allowed it to carry the moral instruction quietly, which is where the title comes from: culture as a mask that power wears.",
+    passages:[
+      {text:"The 1813 Charter Act made the East India Company responsible for education, and by the 1830s English literary texts were on the syllabus, decades before Oxford or Cambridge had a degree in English.", pen:""},
+      {text:"Missionaries were kept out of the schools to avoid unrest, so the moral work they would have done got handed to literature. Shakespeare and Milton became a way of teaching Christian values without a single sermon.", pen:""},
+      {text:"Macaulay's 1835 Minute wanted a class of Indians who were English in taste, opinion and morals. Literature was the tool chosen to make them, because it looked like nothing more than reading.", pen:""},
+      {text:"The book's larger claim: a subject that presents itself as universal and above politics is often doing its most political work exactly there.", pen:""}
+    ],
+    response:"I read this after McLuhan, and I had already written its name in McLuhan's margin, so I came to it with a question ready, which was whether this is a case of the medium being the message, and I think it is. The lesson of the colonial classroom was not in any of the texts on its syllabus, it was in the fact of the syllabus itself, in what it meant to sit in a room in Calcutta and be handed Milton. The uncomfortable part, and Poduval then makes it more uncomfortable, is that this syllabus never really went away. I am studying inside its shape right now. Writing in the margins of this book felt like the only honest response I had available, and possibly the only one the book would have approved of.",
+    slot:""
+  },
+  {
+    id:"whatistext", page:"copied", drive:"https://drive.google.com/file/d/1Y3C60dXoLTAU5QA8Hp7aWZ6ceFwmxuQD/view",
+    author:"Terry Eagleton",
+    title:"“What is Literature?”, from Literary Theory: An Introduction",
+    year:"Blackwell, 1983",
+    note:"the question the whole course keeps circling back to, and never quite settles",
+    what:"Eagleton opens his book by trying out every definition of literature that he can think of and knocking each of them down in turn. Literature is not fiction, because history writing and sermons have counted as literature at various points and most novels have not. It is not language made strange, because what counts as strange depends entirely on who is listening. It is not fine writing, because taste moves. What he is left with is that literature is simply whatever a particular society happens to value highly, and that this valuing is never innocent.",
+    passages:[
+      {text:"First try: literature is imaginative writing, fiction rather than fact. But seventeenth-century English literature included essays, sermons and philosophy, and left out most of what we'd now call fiction. The line between fact and fiction turns out to be a recent one.", pen:""},
+      {text:"Second try, from the Russian Formalists: literature is language that draws attention to itself, ordinary speech deliberately roughed up. Eagleton likes this more, but points out that strangeness is relative. A sentence that sounds poetic to one reader is somebody else's everyday speech.", pen:""},
+      {text:"Third try: literature is writing you read for its own sake, not for information. But that's a fact about how you read, not about the text. Read a bus timetable slowly enough and it starts to sound like a poem.", pen:""},
+      {text:"Where he ends up: literature is highly valued writing, and value judgements change with history and carry ideology with them. There's no text that is literature in itself, only texts that have been treated as literature by particular people at particular times.", pen:""}
+    ],
+    response:"This was the reading I expected to be easy and it was not. I thought I would be given a definition and could then move on. Instead he takes every definition I would have offered, including the ones I did not know I was carrying around, and shows that it does not hold. The line about reading a bus timetable slowly enough that it starts to sound like a poem annoyed me at first and then would not leave me alone. By the end of the chapter I had stopped asking what literature is and started asking who decided, which I think is where the course wanted me to end up all along.",
+    slot:""
+  },
+  {
+    id:"barthes", page:"copied", drive:"https://drive.google.com/file/d/1m8pZ84tu1X_QbaqjviAl72vUMZJTu1w3/view",
+    author:"Roland Barthes",
+    title:"“From Work to Text”",
+    year:"1971; trans. Stephen Heath, 1977",
+    note:"seven propositions on the difference between an object and a field",
+    what:"As far as I could follow it, Barthes says that our idea of language has shifted and so the thing we study has to shift with it. The work is an object, you can hold it, shelve it, put an author's name on it and sell it. The Text is not an object at all but something closer to a field or a process, something that only exists while someone is reading it, and it does not belong to anybody. He sets this out in seven propositions, method, genres, signs, plurality, filiation, reading and pleasure, which I numbered in the margin because I needed something to hold on to.",
+    passages:[
+      {text:"The work takes up space on a shelf. The Text is held in language and only exists in the movement of a discourse.", pen:"method / genres / signs / plurality / filiation / reading / pleasure"},
+      {text:"The Text keeps deferring the signified. Its logic isn't “what does this mean” but association, contiguity, things carried over from elsewhere.", pen:"Delaying the signified indefinitely."},
+      {text:"The work is caught in filiation: the author is its father and owner. Copyright, Barthes notes, only really dates from the French Revolution. The Text reads without the Father's signature on it.", pen:"resistance to writing in the conventional way"},
+      {text:"Reading a work is consumption. The Text wants collaboration, the way a score needs a performer to finish it. Its pleasure is jouissance, pleasure without separation.", pen:"plaisir v/s jouissance. Jouissance is pleasure without separation."}
+    ],
+    response:"The first time through I understood maybe a third of it. What eventually clicked was the section on filiation, the idea that a text can be read without its father, and once that landed roughly half the course rearranged itself around it, the canon in Young, the colonial syllabus in Poduval and Viswanathan, the internet in Carr, all of them turned out to be the same argument about who owns the meaning of a text and what reading becomes when the answer is nobody. The sentence I never fully cracked is the one where he says the work is the imaginary tail of the Text. I have read it maybe ten times. My best guess at the moment is that the book we hold in our hands is only the visible end of something that is mostly happening in language, but I am holding that guess loosely.",
+    slot:""
+  },
+  {
+    id:"mcluhan", page:"told", drive:"https://drive.google.com/file/d/1NZAcWsHe-bb6Rliq8qdH3iZkkmE1ZUaK/view",
+    author:"Marshall McLuhan",
+    title:"“The Medium is the Message”, from Understanding Media",
+    year:"1964",
+    note:"the content of any medium is another medium",
+    what:"McLuhan's first chapter argues that the message of any medium is the change in scale, pace or pattern it brings into human life, regardless of what content it happens to carry. The electric light is a medium with no content at all. The message of the railway is not the freight but the new kinds of cities. Print homogenised France and produced a revolution, whereas England's oral common-law tradition resisted it. He even reads Forster's A Passage to India as a parable of literate, sequential Western reason failing to cope with an oral, inclusive field.",
+    passages:[
+      {text:"The content of writing is speech, the written word is the content of print, print is the content of the telegraph. The “content” of any medium is always another medium.", pen:"Technology itself is the message. Written during the invention and introduction of technology into households."},
+      {text:"De Tocqueville could read the message of print because he stood outside it. Print, once it saturated France in the 1700s, made Frenchmen the same kind of people from north to south.", pen:"Has digital media achieved cultural saturation?"},
+      {text:"Sarnoff's line that technology is neither good nor bad, only its use, McLuhan calls “the voice of the current somnambulism.” Try the sentence with apple pie, smallpox, firearms. It falls apart every time.", pen:"Unbiased? Somnambulism: the sleep disorder where a person performs complex actions."},
+      {text:"IQ tests assume uniform, continuous habits are intelligence, which quietly eliminates the ear-man and the tactile man. A typographic bias nobody can see from inside it.", pen:"A connection to Satish Poduval."},
+      {text:"Technology's effects don't happen at the level of opinions. They alter our sense ratios steadily and without resistance.", pen:"Can be translated to AI. It is the medium that determines how we interact with society itself."}
+    ],
+    response:"This is the reading where I started writing other readings into the margins, Masks of Conquest on the very first page and Poduval next to the passage on IQ tests, which I think means this was the point where the course stopped being a list of separate texts for me and started being one argument. McLuhan gave me the sentence that the whole of this portfolio hangs on, that the content of a medium is always another medium, because it means the question is never only what a text says but what its medium is doing to the reader who holds it. My note on the last page asks whether this translates to AI. I think it does, and I think it is probably the most urgent version of the question for people my age. The example that made it land in class was reels. Nobody argued that any single video was changing them. Everybody admitted that the format was.",
+    slot:""
+  },
+  {
+    id:"carr", page:"scattered", drive:"https://drive.google.com/file/d/1F6bey5G5cCzSdUNTb7stM1S-iqVerI_1/view",
+    author:"Nicholas Carr",
+    title:"“The Juggler's Brain”, from The Shallows",
+    year:"2010; excerpted in Kappan, Dec 2010",
+    note:"what hypertext does to attention and memory",
+    what:"Carr's argument is that the internet seizes our attention only in order to scatter it. Working memory holds about two to four things at once, and a book delivers information as a steady drip that can be moved into long-term memory, whereas the internet opens many taps at the same time. The hope in the 1980s that hypertext would free the reader from the author collapsed once research showed that people reading linear text understood and remembered more. The mental functions that win, he says, are the ones computers are good at, and the ones that lose are the ones that support calm, linear thought.",
+    passages:[
+      {text:"Online we repeat the same few actions at speed, cued by a screen, and the Net pours a constant stream into the visual, somatosensory and auditory cortices.", pen:"Characteristics of the internet: connectivity, interactivity, multiplicity, proximity."},
+      {text:"Neurons that don't fire together don't wire together. As scanning crowds out reading, the circuits that support the old kind of thinking start to weaken.", pen:"Our brains are quite literally being rewired [by the internet]."},
+      {text:"Hypertext was supposed to overthrow the author and hand power to the reader. Instead, evaluating links is a problem-solving task extraneous to reading, and it costs comprehension.", pen:"Hypertext leads you to another text. It scatters your attention. Hyper-reading."},
+      {text:"Greenfield's review of fifty studies: every medium develops some cognitive skills at the expense of others.", pen:"Information-rich environment (positive) vs interruption-rich environment (negative)."}
+    ],
+    response:"Carr is the counter-argument to Barthes and he knows it, he cites Landow's hypertext theory by name and then reports that it did not survive contact with the laboratory. Reading this on a printed page, annotating it by hand, I could actually feel the difference he describes. My note in the margin distinguishes an information-rich environment from an interruption-rich one, and that distinction is what I now try to design for, in my own reading and in the things I build. The one thing I actually changed after this text: I stopped reading the course PDFs on my phone. Every reading on this site was done on paper, with a pen, and that is partly because of this essay.",
+    slot:""
+  },
+  {
+    id:"swift", page:"fixed", drive:"https://drive.google.com/file/d/16RiXtfSFdi713IDeJjyBZgIBSZtSgFuh/view",
+    author:"Jonathan Swift",
+    title:"A Modest Proposal",
+    year:"1729 (Project Gutenberg edition)",
+    note:"a close-reading exercise: satire, economics, and the erosion of moral language",
+    what:"Swift's pamphlet proposes, with total composure and a full set of statistics, that the children of the Irish poor should be sold as food. The satire works because the tone never breaks, the proposer is entirely serious, the arithmetic is careful and the cruelty is dressed up as patriotism. The copy in my portfolio is a printout of the Project Gutenberg edition, annotated by hand, which means it is a 1729 print text that was digitised, printed out again and then written on, and I did not appreciate how neatly that summed up the whole course until I was putting this page together.",
+    passages:[
+      {text:"“…whoever could find out a fair, cheap and easy method of making these children sound and useful members of the commonwealth, would deserve so well of the publick, as to have his statue set up for a preserver of the nation.”", pen:"Masking cruelty as nobility & patriotism for the nation."},
+      {text:"“…a child just dropt from its dam, may be supported by her milk, for a solar year…”", pen:"Dam: agricultural term for the mother of livestock. Humans treated in agricultural and economic terms; the moral boundaries start to erode."},
+      {text:"“I have been assured by a very knowing American of my acquaintance in London, that a young healthy child well nursed, is, at a year old, a most delicious nourishing and wholesome food…”", pen:"The darkest switch yet. Suggesting cannibalism. No switch in tone. The proposer is actually serious."},
+      {text:"“…the mother will have eight shillings neat profit, and be fit for work till she produces another child.”", pen:"A child-bearing machine, used for profits. Commodifying mothers, like cows (livestock)."},
+      {text:"“…they are every day dying, and rotting, by cold and famine, and filth, and vermin, as fast as can be reasonably expected.”", pen:"Using the inhumane conditions the poor live in to justify it. These terms can be connected to how certain far-right accounts on Twitter talk about third-world countries. Shocking how strongly this essay stands the test of time."},
+      {text:"“…he confessed, that this expedient was put into his head by the famous Psalmanaazor, a native of the island Formosa…”", pen:"Satirises how ‘authorities’ and travellers' tales are weaponised to justify even the most inhumane things."}
+    ],
+    response:"I read this the way Young's chapter says a first-year should not, line by line, for what it does rather than for whether it is good, and what the margins record is a growing list of modern equivalents, the language of economics being applied to human beings, a distant authority being cited to license cruelty, a register I recognise from certain accounts on social media. The essay is nearly three hundred years old and I could not read it without the present leaking in, which I think is exactly what Barthes means by intertext, whether I liked it or not. What stuck from the class discussion was the ending, where he lists the actual reforms (taxing absentee landlords, buying Irish goods, landlords showing some mercy to their tenants) and waves them all away as hopeless. That paragraph is the only sincere one in the whole piece and he hides it inside the joke.",
+    slot:""
+  }
+];
+
+const CHAMBERS = ["oral","manuscript","print","digital"];
+const CHAMBER_TITLES = {oral:"Told", manuscript:"Copied", print:"Fixed", digital:"Scattered"};
+
+/* Oral chamber: sentences, delivered one at a time */
+const ORAL = [
+  "Before there was writing there was somebody speaking, and this is where the course started, which confused me at the time because there were no texts yet to talk about. A story that is told out loud does not really have a fixed shape. It changes depending on who is telling it, who is in the room, who interrupts and at what point, and the people listening are not just receiving the story, they are in some way helping to make it, with their silence, their laughter, the parts they repeat back. Now you might be wondering what this has to do with textuality, and I wondered the same, until we read McLuhan's chapter, where he makes the point that the content of any medium is always another medium, so the content of writing is speech, the content of print is writing and so on. If that is the case then underneath every printed page there is a voice that the page has made quiet, and the oral stage is not some primitive phase that we have left behind but the ground that all the later stages were built on top of. This was not something I had ever thought about before this course, and I am not sure I would have taken it seriously if it had been said in any other class.",
+  "He also says, and this is the part that stayed with me the longest, that when print reached saturation in France in the eighteenth century it made French people the same kind of people from north to south, whereas England held on to its oral tradition of common law and stayed unpredictable, and so uniformity was the message of print regardless of what was actually printed on the pages. When I think about the first texts I knew, I knew them by ear, film dialogues that my cousins would quote at each other long before any of us had watched the films, cricket commentary coming out of somebody's window in the evening, none of which was written down anywhere that I could see and all of which, I would now say, was text. So the first thing this course changed for me was a small thing that took a while to notice, which is that a text is not an object you can point at, it is more like a state that language is in, and it can be in that state without any paper being involved at all. Below I discuss the reading that got me to that point, and what I wrote on it."
+];
+
+
+
+/* Manuscript chamber: body paragraphs + glosses (glosses are Rizwan's real marginalia, reused) */
+const MS = [
+  {p:"Barthes mentions, almost in passing, that the Middle Ages did something to their texts that we would today probably call vandalism, they took the two most authoritative books they had, the Scriptures and Aristotle, and broke them open, filling the margins with glosses, commentaries and arguments with the text, so that a manuscript was never really a finished object but a surface that other readers kept writing on for centuries. I did not notice that I had been doing more or less the same thing until I went back through my photocopies at the end of the semester to put this portfolio together. On the first page of McLuhan there is a note in my handwriting pointing towards Viswanathan, next to the passage on IQ testing I had written Poduval's name, on Carr I had drawn a line separating what I called an information-rich environment from an interruption-rich one, and none of this is in the readings, it is all in the margins in blue ballpoint, and some of it I honestly do not remember writing."},
+  {p:"This is, I think, what Unit 1 was getting at with Mezirow's idea of transformative learning. The way it was explained to us in class, a transformative learner is not somebody who adds more facts to what they already believe, it is somebody who is shaken by something, is forced to look properly at an assumption they did not know they were holding, and comes out of it seeing differently (the disorienting dilemma, then critical reflection, then a new frame of reference, in that order on the slide, though in practice it was considerably messier than that). I did not really understand it in the first week, it sounded like the kind of thing courses say about themselves. However, the margin is the one place where you can actually see it happening, because it is a record of the exact moment a sentence stopped being something I had been given and became something I was arguing with. For me the assumption that got shaken was the same one that Young's student describes and that Poduval lives through in his essay, which is that the way I had been taught to read in school was simply how reading is done. It is not. It has a history and it has a politics, and close reading, which I had always thought of as a skill I personally owned, turned out to be a syllabus, and one that was designed, at least in part, to produce a certain kind of governable person."},
+  {p:"If I had to point to the day it happened it was the class on Poduval. I had underlined his line about textual analysis turning out to be tools from the colonial kitbag, mostly because it sounded good, and then it came up in the discussion and somebody asked, quite casually, whether that meant the close-reading exercises we had been doing were the same tools, and nobody in the room had a comfortable answer, including the people who usually do. I remember looking down at my copy of Swift, which was covered in annotations that I had been quietly proud of, and not being sure any more what exactly I had been trained to do. That was the dilemma, and the rest of the semester was spent working out that the answer is not to stop reading closely but to read closely while knowing where the method came from. I cannot unlearn it and to be honest I do not want to, but I can write in its margins, and the two readings on this page are the ones that taught me how."}
+];
+
+
+
+/* Print chamber: fixed, justified, no interaction */
+const PRINT = [
+  "Print made the work. Not the text, people were telling stories long before there was paper, but the work in the sense that Barthes uses the word, a bounded object that sits on a shelf, has one author's name on the spine and belongs to that author in a legal sense. One thing that genuinely surprised me in his essay is that copyright only properly begins with the French Revolution, and before that, as far as I understand it, a text belonged to whoever was in a position to copy it. The subject that I have just begun studying was built entirely on print's assumptions. Young's chapter shows practical criticism treating the poem as a fixed object whose value can be settled by looking at it closely enough, it shows the Leavises drawing up their canon of great works and it shows that canon borrowing its authority from a list of scriptures approved by James I, and reading all of this it struck me that the canon is fundamentally a print idea. It requires fixed texts, named authors and a shelf to put them on, and none of these existed in the oral stage.",
+  "It also, as it turns out, requires an empire. Viswanathan's argument, which I am still working through, is that English literature was being taught in Indian classrooms before it was being taught in English ones, and that it was put there as a way of ruling through culture rather than through soldiers, and Poduval, writing about a century and a half later, describes his own carefully polished skills of textual analysis suddenly looking to him like tools from the colonial kitbag, which is a line that stayed with me longer than most of the readings did, because the closed page and the closed syllabus seem to me to be more or less the same thing. Swift is on this page too, partly because A Modest Proposal is the most printed thing we read this semester, a pamphlet built to be circulated and argued over, and partly because it was the reading where I did the closest reading of the whole course and then, a few weeks later, had to ask myself where that skill had come from and what it had been for. Below I discuss all four texts, with the scans of my annotated copies."
+];
+
+
+
+/* Digital chamber: fragments with links */
+const DIG = [
+  {p:"In 1971 Barthes was describing a kind of Text that a printed book cannot really provide, plural, with no father, produced by the reader rather than consumed by them, and Carr mentions that in the 80s and 90s some theorists (he names George Landow in particular) believed that hypertext had made this literal, that the hyperlink would finally set the reader free from the author. Then, according to Carr, the research started coming in. People who read ordinary linear text understood and remembered more than people who read text full of links, because deciding whether or not to click is a small problem to solve and it has nothing to do with reading, and so the reader who was supposed to have been liberated turned out to have what Carr calls a juggler's brain, quick at everything and deep at nothing. I found this uncomfortable, mostly because I recognised myself in it, and I suspect most people in the class did too, whether or not they said so."},
+  {p:"So I do not think the digital age settles the question of who owns a text, if anything it splits the reader down the middle. On one side there is the promise that Barthes made, meaning produced in the network with the author reduced to a guest, and on the other side there is the warning from McLuhan that I wrote in my own margin, that a medium changes how we sense things steadily and without asking our permission, which I am fairly sure applies to AI as much as it applied to television, though I am a first-year student and this is a guess rather than a claim. The example that came up in class was reels, and what struck me was that nobody argued that any particular video was changing them, but everybody admitted that the format was, and that is McLuhan's point exactly, except that this time we were making it about ourselves."},
+  {p:"So what did one semester of this course actually do? Mainly, I notice the medium now and not only the content. I cannot look at a page any more, whether it is printed, scanned or scrolled, without wondering what it is doing to the person holding it, and I am not sure whether that counts as wisdom yet or whether it is just a new habit I have picked up. But I write in the margins now, in a way that I did not before, and this site is in a sense one long margin. The one reading on this page is the one that made me admit that."}
+];
+
+
+
+
+const PAGES = ["told","copied","fixed","scattered"];
+const PAGE_TITLES = {told:"Told", copied:"Copied", fixed:"Fixed", scattered:"Scattered"};
+const PAGE_BLURB = {
+  told:"orality, and what came before the page",
+  copied:"the manuscript, the margin, and Unit 1",
+  fixed:"print, the canon, and the discipline of English",
+  scattered:"hypertext, attention, and reading now"
+};
+const PAGE_OPEN_UNUSED = {
+  told:"This page is about the stage before writing, and the reading that made me take it seriously. Below, I explain in brief my response to the text and what I wrote in its margins.",
+  copied:"This page is about the manuscript stage, the habit of writing in margins, and what Unit 1 asked of us under the name transformative learning. The two readings here are the ones that taught me to write back.",
+  fixed:"This page is about print, and about the subject I've just started studying, which was built on print's assumptions. It holds four readings, and it's the longest page on the site. I explain my responses to each text below, along with the scans of my annotated copies.",
+  scattered:"This page is about reading now, on screens, and about what one semester of this course did. It holds one reading, and it ends the portfolio."
+};
+const PAGE_TEXT = {told:ORAL.map(x=>({p:x})), copied:MS, fixed:PRINT.map(x=>({p:x})), scattered:DIG};
+
+const app=document.getElementById("app");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function setNav(k){document.querySelectorAll(".top a[data-nav]").forEach(a=>a.classList.toggle("on",a.dataset.nav===k))}
+function readingsOn(p){return READINGS.filter(r=>r.page===p)}
+function foot(){return `<div class="foot">Email - rizwanbinaseef@gmail.com<br>BA English and Digital Humanities, first year, 2633131</div>`}
+
+function viewHome(){
+  setNav("home");
+  return `
+  <h1 class="course">Text and Textualities.</h1>
+  <h2>About the course</h2>
+  <p>This particular course, Text and Textualities, is a course in the first semester of the BA in English and Digital Humanities, and it deals with, as the name suggests, the question of what a text is. Now on the first day I honestly assumed that this would be a fairly short question with a fairly short answer, something like a text is anything that is written down, and that we would then move on to actually reading texts. That is not what happened. I knew that a course about texts obviously belongs in a literature degree, what I did not expect was how deep it would go and how much of it would be about things that did not look like literature at all. We started, not with any text, but with the subject of English itself, where it came from as a discipline, what it was originally built to do and how it looks when you study it from an Indian classroom instead of a British one, and only after that did we come to the theory of the text as such, Barthes and his distinction between the work and the Text, and Eagleton, who spends an entire chapter refusing to define literature and then more or less admits that it cannot be done. The second half of the course followed the text through its different media, from oral cultures to the manuscript, from the manuscript to print and from print to the screen, and here McLuhan and Carr were used to ask what each of these media does to the person who is reading in it, whether they are aware of it or not. By the end of the semester the question was no longer what is a text but who decided what counts as one and through which medium, which is a very different question and, I believe, a more useful one.</p>
+  <p>Unit 1 framed all of this through the idea of transformative learning, which in short means that the aim of the course was not to give us more information about texts but to disturb an assumption we already had about them and make us look at it properly. Every reading in the course was done on paper, on a photocopy, with a pen, and I have come to think this was deliberate, because it meant that whatever got disturbed left a mark somewhere. Those annotated photocopies are what this portfolio is made of. On the four pages of this site I will be discussing the readings themselves, my responses to them and what I ended up writing in their margins, which in some cases surprised me more than the readings did.</p>
+  <h2>About me</h2>
+  <p>My name is Rizwan Aseef and I am 19 years old, currently in my first year of the BA in English and Digital Humanities at Christ Deemed-to-be University, BGR campus. I came into this degree from a commerce background, which is not the usual route, and along with the degree I run a small marketing agency with a friend, so a good part of my week is spent reading things that are not literature at all, briefs, captions, analytics and so on. Before this semester most of my reading was for pleasure and most of it was on a phone. I mention this because it turned out to be relevant to the course: I arrived expecting Text and Textualities to be the part of the week where I read something and then said whether or not I liked it, and it turned out instead to be the course that made me question why I read the way I read in the first place.</p>
+  <p>In this portfolio, I will be discussing my understanding and experience of this course. I have organised it around four stages in the life of a text, Told, Copied, Fixed and Scattered, which are also, more or less, the four stages the course took us through in order. Each page begins with my reflection on that stage, and then goes through the readings that belong to it, with my response to each text, the passages I marked and the scans of my own annotated copies, which you can scroll through on the page itself.</p>
+  <ul class="areas">
+    ${PAGES.map(p=>`<li><a href="#/${p}">${PAGE_TITLES[p]}</a><span>${esc(PAGE_BLURB[p])} · ${readingsOn(p).map(r=>esc(r.author)).join(", ")}</span></li>`).join("")}
+  </ul>
+  <p class="note">The scans on this site are my own annotated photocopies of the course readings. The texts belong to their authors and publishers; full references are given at the end of each page.</p>
+  ${foot()}`;
+}
+
+function cite(r){
+  const C={
+    barthes:"Barthes, Roland. “From Work to Text.” 1971. <i>Image–Music–Text</i>, translated by Stephen Heath, Fontana, 1977.",
+    carr:"Carr, Nicholas. “The Juggler's Brain.” <i>Phi Delta Kappan</i>, vol. 92, no. 4, 2010, pp. 8–14. Excerpted from <i>The Shallows</i>, W. W. Norton, 2010.",
+    whatistext:"Eagleton, Terry. “What is Literature?” <i>Literary Theory: An Introduction</i>, Blackwell, 1983, pp. 1–16.",
+    mcluhan:"McLuhan, Marshall. “The Medium is the Message.” <i>Understanding Media: The Extensions of Man</i>, 1964.",
+    poduval:"Poduval, Satish. “To Be in Eng. Lit., Now That…: The Voyage Out.” <i>Subject to Change: Teaching Literature in the Nineties</i>, edited by Susie Tharu, Orient Longman, 1998, pp. 143–58.",
+    swift:"Swift, Jonathan. <i>A Modest Proposal</i>. 1729. Project Gutenberg, ebook 1080.",
+    viswanathan:"Viswanathan, Gauri. <i>Masks of Conquest: Literary Study and British Rule in India</i>. Columbia UP, 1989.",
+    young:"Young, Tory. “Reading.” <i>Studying English Literature: A Practical Guide</i>, Cambridge UP, 2008, pp. 24–35."
+  };
+  return C[r.id]||"";
+}
+
+function readingBlock(r){
+  return `
+  ${r.drive?`<div class="scan"><iframe src="${r.drive.replace('/view','/preview')}" title="Annotated scan of ${esc(r.title)}" loading="lazy" allow="autoplay"></iframe></div>
+  <p class="small soft">My annotated copy. Scroll through it here or <a href="${r.drive}" target="_blank" rel="noopener">open it full size</a>.</p>`:""}
+  <h2 id="${r.id}">${esc(r.title)}</h2>
+  <p class="small soft">${esc(r.author)}, ${esc(r.year)}</p>
+  <p>${esc(r.what)}</p>
+  ${r.response?`<p>${esc(r.response)}</p>`:""}
+  <div class="sheet"><div class="src">Passages I marked, with what I wrote beside them</div>
+    ${r.passages.map(p=>`<div class="passage"><p>${esc(p.text)}</p>${p.pen?`<div class="mnote pen">${esc(p.pen)}</div>`:""}</div>`).join("")}
+  </div>`;
+}
+
+function viewPage(page){
+  if(!PAGES.includes(page)) page="told";
+  setNav(page);
+  const i=PAGES.indexOf(page), rs=readingsOn(page);
+  const prev=i>0?PAGES[i-1]:null, next=i<PAGES.length-1?PAGES[i+1]:null;
+  const conclusion = page==="scattered" ? `
+  <div class="label">Conclusion</div>
+  <p>I think it is finally time to end this portfolio, which I put together over the past week by going back through every photocopy from the semester and reading what I had written in the margins, a good deal of which I did not remember writing and some of which I would not write now. I came into this degree from a commerce background and I expected this course to be the part of the week where I read something and said whether I liked it, and it was not that. It was the course that made me notice the page I was holding, and then the syllabus that page had come from, and then the medium that the syllabus took for granted, and I do not think I read anything the same way now, including the things I read for work, which was not something I expected a literature course to do.</p>
+  <p>This concludes my portfolio for the course Text and Textualities, which turned out to be a much deeper and stranger course than its title suggested. My thanks to Christ Deemed-to-be University and to Prof. Renu Elizabeth, whose classes are the reason there is anything written in these margins at all.</p>` : "";
+  return `
+  <h1>${PAGE_TITLES[page]}</h1>
+  ${PAGE_TEXT[page].map(x=>`<p>${esc(x.p)}</p>`).join("")}
+  <p class="note">(The scans below are my own annotated photocopies. The texts belong to their authors.)</p>
+  ${rs.map(readingBlock).join("<hr>")}
+  ${conclusion}
+  <div class="label">References</div>
+  ${rs.map(r=>`<p class="small">${cite(r)}</p>`).join("")}
+  <div class="prevnext"><span>${prev?`<a href="#/${prev}">← ${PAGE_TITLES[prev]}</a>`:""}</span><span>${next?`<a href="#/${next}">${PAGE_TITLES[next]} →</a>`:""}</span></div>
+  ${foot()}`;
+}
+
+function render(){
+  const h=location.hash.replace(/^#\/?/,"");
+  const [a,b]=h.split("/");
+  let html;
+  if(!a) html=viewHome();
+  else if(PAGES.includes(a)) html=viewPage(a);
+  else if(a==="reflection") html=viewPage({oral:"told",manuscript:"copied",print:"fixed",digital:"scattered"}[b]||"told");
+  else if(a==="reading"){const r=READINGS.find(x=>x.id===b); html=viewPage(r?r.page:"told");}
+  else html=viewHome();
+  app.innerHTML=html; window.scrollTo({top:0});
+}
+window.addEventListener("hashchange",render); render();
+</script>
+</body>
+</html>
